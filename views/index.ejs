@@ -5,7 +5,7 @@
   <link href="/styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <form class="login">
+  <div class="login">
     <p class="title">Log in with your Team ID</p>
     <input
       type="text"
@@ -14,11 +14,11 @@
       name="id"/>
 
     <span class="state" onclick="submit()">Log in</span>
-  </form>
+  </div>
   <script src="/jquery-3.2.1.min.js" ></script>
   <script>
     submit = () =>{
-      let id_val = $('form input').val();
+      let id_val = $('input').val();
       if(id_val === "" || id_val == undefined){
         alert("Team ID can not be blank");
       }
@@ -29,7 +29,6 @@
           url: '/',
           data: teamID,
           success: function(data){
-            console.log(data);
             window.location.replace(data);
           },
           error: function(xhr){
@@ -39,12 +38,6 @@
         return false;
       }
     }
-    $(document).ready(function(){
-      $('form').on('submit', function(){
-        e.preventDefault();
-
-      });
-    });
   </script>
 </body>
 </html>
