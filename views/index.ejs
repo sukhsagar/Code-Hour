@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>Code Hour</title>
+  <!-- <script src="/jquery-3.2.1.min.js" /> -->
+  <link href="/styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <form class="login">
+    <p class="title">Log in with your Team ID</p>
+    <input
+      type="text"
+      placeholder="Team ID"
+      autoFocus
+      name="id"/>
+
+    <span class="state" onclick="submit()">Log in</span>
+  </form>
+  <script src="/jquery-3.2.1.min.js" ></script>
+  <script>
+    submit = () =>{
+      let id_val = $('form input').val();
+      if(id_val === "" || id_val == undefined){
+        alert("Team ID can not be blank");
+      }
+      else{
+        var teamID = {id: id_val.toLocaleLowerCase()};
+        $.ajax({
+          type: 'POST',
+          url: '/',
+          data: teamID,
+          success: function(data){
+            console.log("success")
+          },
+          error: function(xhr){
+            alert(xhr.responseText);
+          }
+        });
+        return false;
+      }
+    }
+    $(document).ready(function(){
+      $('form').on('submit', function(){
+        e.preventDefault();
+
+      });
+    });
+  </script>
+</body>
+</html>
