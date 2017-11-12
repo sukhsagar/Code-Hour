@@ -27,11 +27,11 @@ module.exports = function(app){
       res.send('/code_hour');
       next();
     }
-    else if(teamID.localeCompare("ch_do_level1")){ //senior challenges junior
+    else if(!teamID.localeCompare("ch_do_level1")){ //senior challenges junior
       res.send('/level1');
       next();
     }
-    else if(teamID.localeCompare("ch_do_level2")){ //junior challenges senior
+    else if(!teamID.localeCompare("ch_do_level2")){ //junior challenges senior
       res.send('/level2');
       next();
     }
