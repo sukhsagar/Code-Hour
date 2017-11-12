@@ -11,15 +11,11 @@ module.exports = function(app){
   app.post('/',urlEncodedParser,function(req,res,next){
     let teamID = req.body.id;
     if(seniorTeams.includes(teamID)){
-      console.log("seniors");
-      // res.render('senior');
-      // res.location('/code-hour');
-        res.redirect('/code-hour');
+        res.send('/code-hour');
         next();
     }
     else if(juniorTeams.includes(teamID)){
-      console.log("juniors");
-      res.redirect('/code_hour');
+      res.send('/code_hour');
       next();
     }
     else {
@@ -34,6 +30,7 @@ module.exports = function(app){
   });
 
   app.get('/code_hour',function(req,res){
-    res.sendFile(__dirname + '/public/code_hour.html');
+    res.render('junior');
+    // res.sendFile(__dirname + '/public/code_hour.html');
   });
 };

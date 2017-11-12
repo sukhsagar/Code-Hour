@@ -29,7 +29,8 @@
           url: '/',
           data: teamID,
           success: function(data){
-            console.log("success")
+            console.log(data);
+            window.location.replace(data);
           },
           error: function(xhr){
             alert(xhr.responseText);
