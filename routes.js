@@ -8,28 +8,32 @@ module.exports = function(app){
     res.render('index');
   });
 
-  app.post('/',urlEncodedParser,function(req,res){
+  app.post('/',urlEncodedParser,function(req,res,next){
     let teamID = req.body.id;
     if(seniorTeams.includes(teamID)){
-        return res.redirect('/code-hour');
+      console.log("seniors");
+      // res.render('senior');
+      // res.location('/code-hour');
+        res.redirect('/code-hour');
+        next();
     }
     else if(juniorTeams.includes(teamID)){
-        return res.redirect('/code_hour');
+      console.log("juniors");
+      res.redirect('/code_hour');
+      next();
     }
     else {
       res.status(300).send("Team with ID '"+teamID+"' does not exist");
     }
   });
 
-  app.get('/code-hour',function(req,res){
-    res.render(__dirname + '/public/seniors.html');
+  app.get('/code-hour',function(req,res,next){
+    res.render('senior');
+    next();
+    // res.sendFile(__dirname + '/public/code-hour.html');
   });
 
   app.get('/code_hour',function(req,res){
-    res.sendFile(__dirname + '/public/juniors.html');
-  });
-
-  app.delete('/todo',function(req,res){
-
+    res.sendFile(__dirname + '/public/code_hour.html');
   });
 };
