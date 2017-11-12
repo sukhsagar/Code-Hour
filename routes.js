@@ -8,7 +8,8 @@ let juniorTeams = ["ch_10112016_as",
                   "ch_10512015_kn",
                   "ch_10582017_tn",
                   "ch_10292017_mk",
-                  "ch_10192017_js"];
+                  "ch_10192017_js",
+                  "ch_10602017_ys"];
 var urlEncodedParser = bodyParser.urlencoded({extended:false});
 module.exports = function(app){
 
